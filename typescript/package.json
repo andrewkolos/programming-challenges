@@ -20,20 +20,20 @@
   "license": "ISC",
   "dependencies": {
     "@akolos/ts-tween": "^1.0.0",
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.20",
     "ts-nameof": "^4.2.2"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
     "@types/ts-nameof": "^4.2.1",
-    "jest": "^25.3.0",
-    "parcel": "^1.12.4",
+    "chalk": "^4.1.0",
     "ts-jest": "^25.3.1",
     "ts-node": "^8.10.2",
     "ts-node-register": "^1.0.0",
     "tslint": "^6.1.1",
     "tslint-clean-code": "^0.2.10",
-    "typescript": "^4.0.2"
+    "typescript": "^4.1.3"
   },
   "description": "",
   "engines": {

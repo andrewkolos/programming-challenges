@@ -46,20 +46,22 @@ function getOrDefault<K, V>(map: Map<K, V>, key: K, def: V) {
 
 
 
-function pathSumRecursive(root: TreeNode | null, sum: number): number {
+function pathSum(root: TreeNode | null, sum: number): number {
   if (root == null) return 0;
 
   // The solution is the sum of three choices we can make at each node that result
   // in a path with the target sum.
-  return continueSearch(root, sum) + // 1. Include root in our sum and continue searching.
+  return continueSearch(root, 0, sum) + // 1. Include root in our sum and continue searching.
     pathSum(root.left, sum) + // 2. Ignore root and explore left subtree.
     pathSum(root.right, sum); // 3. Ignore root and explore right subtree.
 }
 
-function continueSearch(root: TreeNode | null, target: number): number {
-  if (root == null) return 0;
+function continueSearch(node: TreeNode | null, currentSum: number, targetSum: number): number {
+  if (node == null) return 0;
 
-  return (target === root.val ? 1 : 0) + // Check if we reached the target, if so, add one to result.
-    continueSearch(root.left, target - root.val) + // Include this node in our candidate path, updating the target. Explore left subtree.
-    continueSearch(root.right, target - root.val); // Same thing as previous line, but exploring the right subtree.
+  const newSum = currentSum + node.val;
+
+  return (newSum === targetSum ? 1 : 0) + // Check if we reached the target, if so, add one to result.
+    continueSearch(node.left, newSum, targetSum) + // Include this node in our candidate path, updating the target. Explore left subtree.
+    continueSearch(node.right, newSum, targetSum); // Same thing as previous line, but exploring the right subtree.
 }
